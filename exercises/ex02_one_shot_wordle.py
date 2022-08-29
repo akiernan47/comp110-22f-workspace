@@ -1,11 +1,11 @@
-"""EX02 - One Shot Wordle"""
+"""EX02 - One Shot Wordle."""
 
 __author__ = "730515426"
 
 secret_word: str = "python"
 user_word: str = input("What is your 6-letter guess? ")
 while len(user_word) != 6:
-    user_word: str = input("That was not 6 letters! Try again: ")
+    user_word = input("That was not 6 letters! Try again: ")
 if len(user_word) == 6:
     if user_word == secret_word:
         print("Woo! You got it! ")
