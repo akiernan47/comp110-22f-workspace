@@ -2,10 +2,11 @@
 
 __author__ = "730515426"
 
-secret_word: str = "python"
-user_word: str = input("What is your 6-letter guess? ")
+secret_word: str = "pyth"
+prompt_len: str = len(secret_word)
+user_word: str = input(f"What is your {prompt_len}-letter guess? ")
 while len(user_word) != len(secret_word):
-    user_word = input("That was not 6 letters! Try again: ")
+    user_word = input(f"That was not {prompt_len} letters! Try again: ")
 if len(user_word) == len(secret_word):
     if user_word == secret_word:
         print("Woo! You got it! ")
