@@ -30,27 +30,27 @@ while idx < secret_len:
         idx += 1
     # If match not present:
     else:
-        chr_present: bool = False # Initializes variable for a character existing at False
-        altidx: int = 0 # Initializes variable for counting alternative indexes of the secret word
+        chr_present: bool = False  # Initializes variable for a character existing at False
+        altidx: int = 0  # Initializes variable for counting alternative indexes of the secret word
         
         # 
         while not chr_present and altidx < secret_len:
             if secret_word[altidx] == user_word[idx]:
-                chr_present = True # Character listed as existing somewhere else in the secret word
+                chr_present = True  # Character listed as existing somewhere else in the secret word
             else:
-                altidx += 1 # Count increased by one for the next iteration of the loop 
+                altidx += 1  # Count increased by one for the next iteration of the loop 
         if chr_present:
-            emoji_str += YELLOW_BOX # Corresponding box output for a present character
-            idx += 1 # Increase count for the scope of the outer loop
+            emoji_str += YELLOW_BOX  # Corresponding box output for a present character
+            idx += 1  # Increase count for the scope of the outer loop
         else:
-            emoji_str += WHITE_BOX # Corresponding box output for a non-present character
-            idx += 1 # Increase count for the scope of the outer loop
+            emoji_str += WHITE_BOX  # Corresponding box output for a non-present character
+            idx += 1  # Increase count for the scope of the outer loop
         
-print(emoji_str) # Complete string of the length of the secret word is output made up of boxes
+print(emoji_str)  # Complete string of the length of the secret word is output made up of boxes
 
 # Final guess checking conditional :
 if len(user_word) == secret_len:
     if user_word == secret_word:
-        print("Woo! You got it! ") # Correct response
+        print("Woo! You got it! ")  # Correct response
     else:
-        print("Not quite. Play again soon! ") # Incorrect response
+        print("Not quite. Play again soon! ")  # Incorrect response
