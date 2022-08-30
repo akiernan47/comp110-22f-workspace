@@ -22,19 +22,18 @@ while idx < prompt_len:
     else:
         chr_present: bool = False
         altidx: int = 0
-        while chr_present != True and altidx < prompt_len:
+        while not chr_present and altidx < prompt_len:
             if secret_word[altidx] == user_word[idx]:
                 chr_present = True
             else:
                 altidx += 1
-        if chr_present == True:
+        if chr_present:
             emoji_str += YELLOW_BOX
             idx += 1
         else:
             emoji_str += WHITE_BOX
             idx += 1
         
-
 print(emoji_str)
 
 if len(user_word) == prompt_len:
