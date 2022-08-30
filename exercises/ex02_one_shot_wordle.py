@@ -5,9 +5,9 @@ __author__ = "730515426"
 secret_word: str = "python"
 secret_len: int = len(secret_word)
 
-# Prompting user to input their guess of the secret word and storing it in a variable of the string type
+# Prompting user to input their guess of the secret word as a variable of the string type
 user_word: str = input(f"What is your {secret_len}-letter guess? ")
-# Executes while the guess does not match the length of the secret word for error checking purposes
+# Executes while the guess does not match the length of the secret word for error checking
 while len(user_word) != secret_len:
     user_word = input(f"That was not {secret_len} letters! Try again: ")
 
@@ -31,12 +31,13 @@ while idx < secret_len:
     # If match not present:
     else:
         chr_present: bool = False  # Initializes variable for a character existing at False
-        altidx: int = 0  # Initializes variable for counting alternative indexes of the secret word
+        altidx: int = 0  # Initializes variable to hold alternative indexes of the secret word
         
-        # 
+# Loop runs while character is not present and the other index is below the secret length
         while not chr_present and altidx < secret_len:
             if secret_word[altidx] == user_word[idx]:
-                chr_present = True  # Character listed as existing somewhere else in the secret word
+                chr_present = True  
+                # Character listed as existing somewhere else in the secret word
             else:
                 altidx += 1  # Count increased by one for the next iteration of the loop 
         if chr_present:
@@ -46,9 +47,10 @@ while idx < secret_len:
             emoji_str += WHITE_BOX  # Corresponding box output for a non-present character
             idx += 1  # Increase count for the scope of the outer loop
         
-print(emoji_str)  # Complete string of the length of the secret word is output made up of boxes
+print(emoji_str)  
+# Complete string of the length of the secret word is output(comprised of boxes)
 
-# Final guess checking conditional :
+# Final guess checking conditional:
 if len(user_word) == secret_len:
     if user_word == secret_word:
         print("Woo! You got it! ")  # Correct response
