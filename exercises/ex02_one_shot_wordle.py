@@ -16,15 +16,15 @@ WHITE_BOX: str = "\U00002B1C"
 GREEN_BOX: str = "\U0001F7E9"
 YELLOW_BOX: str = "\U0001F7E8"
 
-word_idx: int = 0
+idx: int = 0
 emoji_str: str = ""
 
-while word_idx < len(secret_word):
-    if user_word[word_idx] == secret_word[word_idx]:
+while idx < len(secret_word):
+    if user_word[idx] == secret_word[idx]:
         emoji_str += GREEN_BOX
-        word_idx += 1
+        idx += 1
     else:
         emoji_str += WHITE_BOX
-        word_idx += 1
+        idx += 1
 
 print(emoji_str)
