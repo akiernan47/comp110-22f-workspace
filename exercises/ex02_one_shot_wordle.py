@@ -27,7 +27,7 @@ while idx < secret_len:
     if user_word[idx] == secret_word[idx]:
         # Match at index:
         emoji_str += GREEN_BOX
-        idx += 1 # Look to the next index
+        idx += 1  # Look to the next index
     else:
         # No match at index:
         chr_present: bool = False  # Variable for a character's presence, initially False
