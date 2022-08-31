@@ -16,9 +16,9 @@ WHITE_BOX: str = "\U00002B1C"
 GREEN_BOX: str = "\U0001F7E9"
 YELLOW_BOX: str = "\U0001F7E8"
 
-# Will keep track of the index of the guess string, initialized at 1st position (0)
+# Will keep track of the index of the guess string
 idx: int = 0
-# Will store the corresponding box colors as a string, initialized at empty status
+# Will store the corresponding colored boxes as a string, initialized at empty status
 emoji_str: str = ""
 
 # Executes while the index value is less than the length of the secret word:
@@ -30,14 +30,14 @@ while idx < secret_len:
         idx += 1
     # If match not present:
     else:
-        chr_present: bool = False  # Initializes variable for a character existing at False
+        chr_present: bool = False  # Variable for a character's presence, initially False
         altidx: int = 0  # Initializes variable to hold alternative indexes of the secret word
         
 # Loop runs while character is not present and the other index is below the secret length
         while not chr_present and altidx < secret_len:
             if secret_word[altidx] == user_word[idx]:
                 chr_present = True  
-                # Character listed as existing somewhere in the secret word
+                # Character now listed as present within the secret word
             else:
                 altidx += 1  # Count increased by one for the next iteration of the loop 
         if chr_present:
