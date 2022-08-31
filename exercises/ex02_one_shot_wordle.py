@@ -16,7 +16,7 @@ WHITE_BOX: str = "\U00002B1C"
 GREEN_BOX: str = "\U0001F7E9"
 YELLOW_BOX: str = "\U0001F7E8"
 
-# Will keep track of the index of a string, initialized at first position ([0])
+# Will keep track of the index of a string, initialized at first position (0)
 idx: int = 0
 # Will store the corresponding box colors as a string, initialized at empty status
 emoji_str: str = ""
