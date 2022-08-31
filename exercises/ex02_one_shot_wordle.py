@@ -50,9 +50,8 @@ while idx < secret_len:
 print(emoji_str)  
 # Complete emoji string is output
 
-# Final guess checking conditional:
-if len(user_word) == secret_len:
-    if user_word == secret_word:
-        print("Woo! You got it! ")  # Correct response
-    else:
-        print("Not quite. Play again soon! ")  # Incorrect response
+# Response conditional based on guess accuracy:
+if user_word == secret_word:
+    print("Woo! You got it! ")  # Correct response
+else:
+    print("Not quite. Play again soon! ")  # Incorrect response
