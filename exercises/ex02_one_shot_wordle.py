@@ -5,7 +5,7 @@ __author__ = "730515426"
 secret_word: str = "python"
 secret_len: int = len(secret_word)
 
-# Prompting user to input their guess of the secret word as a variable of the string type
+# Prompting user to input their guess of the secret word
 user_word: str = input(f"What is your {secret_len}-letter guess? ")
 # Executes while the length of the words do not match for error checking
 while len(user_word) != secret_len:
