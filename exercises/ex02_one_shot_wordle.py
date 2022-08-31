@@ -31,7 +31,7 @@ while idx < secret_len:
     else:
         # No match at index:
         chr_present: bool = False  # Variable for a character's presence, initially False
-        altidx: int = 0  # Initializes variable to hold alternative indexes of the secret word
+        altidx: int = 0  # Initializes variable to hold alternative index of the secret word
         
 # Loop runs while character is not present and the other index is less than the secret length
         while not chr_present and altidx < secret_len:
