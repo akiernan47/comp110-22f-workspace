@@ -23,7 +23,7 @@ emoji_str: str = ""
 
 # Executes while the index value is less than the length of the secret word:
 while idx < secret_len:
-    # Checks for matching character at a given index for the guess and secret
+    # Checks for matching character at the same index for the user guess and secret word
     # If match at index:
     if user_word[idx] == secret_word[idx]:
         emoji_str += GREEN_BOX
@@ -35,17 +35,18 @@ while idx < secret_len:
         
 # Loop runs while character is not present and the other index is less than the secret length
         while not chr_present and altidx < secret_len:
+            # Checks for matching character at differing indexes
             if secret_word[altidx] == user_word[idx]:
                 chr_present = True  
                 # Character now listed as present within the secret word
             else:
-                altidx += 1  # Count increased by one for the next iteration of the loop 
+                altidx += 1  # Look to the next alternative index 
         if chr_present:
             emoji_str += YELLOW_BOX  # Corresponding box output for a present character
-            idx += 1  # Increase count for the scope of the outer loop
+            idx += 1  # Look to the next index (scope of the outer loop)
         else:
             emoji_str += WHITE_BOX  # Corresponding box output for a non-present character
-            idx += 1  # Increase count for the scope of the outer loop
+            idx += 1  # Look to the next index (scope of the outer loop)
         
 print(emoji_str)  
 # Complete emoji string is output
