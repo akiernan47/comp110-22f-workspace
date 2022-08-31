@@ -37,7 +37,7 @@ while idx < secret_len:
         while not chr_present and altidx < secret_len:
             if secret_word[altidx] == user_word[idx]:
                 chr_present = True  
-                # Character listed as existing somewhere else in the secret word
+                # Character listed as existing somewhere in the secret word
             else:
                 altidx += 1  # Count increased by one for the next iteration of the loop 
         if chr_present:
