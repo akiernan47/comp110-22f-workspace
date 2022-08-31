@@ -48,7 +48,7 @@ while idx < secret_len:
             idx += 1  # Increase count for the scope of the outer loop
         
 print(emoji_str)  
-# Complete emoji string is output -> # of boxes = # of characters in the secret word
+# Complete emoji string is output at the length of the secret word
 
 # Final guess checking conditional:
 if len(user_word) == secret_len:
