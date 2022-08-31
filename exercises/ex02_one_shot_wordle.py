@@ -24,18 +24,18 @@ emoji_str: str = ""
 # Executes while the index value is less than the length of the secret word:
 while idx < secret_len:
     # Checks for matching character at the same index for the user guess and secret word
-    # If match at index:
     if user_word[idx] == secret_word[idx]:
+        # Match at index:
         emoji_str += GREEN_BOX
-        idx += 1
-    # If no match at index:
+        idx += 1 # Look to the next index
     else:
+        # No match at index:
         chr_present: bool = False  # Variable for a character's presence, initially False
         altidx: int = 0  # Initializes variable to hold alternative indexes of the secret word
         
 # Loop runs while character is not present and the other index is less than the secret length
         while not chr_present and altidx < secret_len:
-            # Checks for matching character at differing indexes
+            # Checks for matching character at differing indexes for the guess and secret word
             if secret_word[altidx] == user_word[idx]:
                 chr_present = True  
                 # Character now listed as present within the secret word
