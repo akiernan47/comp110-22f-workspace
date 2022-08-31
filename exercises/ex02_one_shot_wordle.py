@@ -40,15 +40,15 @@ while idx < secret_len:
                 chr_present = True  
                 # Character now listed as present within the secret word
             else:
-                altidx += 1  # Look to the next alternative index 
+                altidx += 1  # Look to the next alternative index for secret word
         if chr_present:
             # Yellow box added to the emoji string:
             emoji_str += YELLOW_BOX  # Corresponding box output for a present character
-            idx += 1  # Look to the next index (scope of the outer loop)
+            idx += 1  # Look to the next index (jumps back the outer loop)
         else:
             # White box added to the emoji string:
             emoji_str += WHITE_BOX  # Corresponding box output for a non-present character
-            idx += 1  # Look to the next index (scope of the outer loop)
+            idx += 1  # Look to the next index (jumps back to outer loop)
         
 print(emoji_str)  # Complete emoji string is output
 
