@@ -44,7 +44,7 @@ while idx < secret_len:
         if chr_present:
             # Yellow box added to the emoji string:
             emoji_str += YELLOW_BOX  # Corresponding box output for a present character
-            idx += 1  # Look to the next index (jumps back the outer loop)
+            idx += 1  # Look to the next index (jumps back to outer loop)
         else:
             # White box added to the emoji string:
             emoji_str += WHITE_BOX  # Corresponding box output for a non-present character
