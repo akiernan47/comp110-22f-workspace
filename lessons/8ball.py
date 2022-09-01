@@ -1,7 +1,7 @@
 from random import randint
 
 question: str = input("Ask a yes/no question... ")
-response: int = 0
+response: int = randint(0, 2)
 
 if response == 0:
     print("Yes, definitely")
