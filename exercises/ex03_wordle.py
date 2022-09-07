@@ -12,7 +12,7 @@ def contains_char(searched_word: str, search_chr: str) -> bool:
             return True # Character is present
         else:
             idx += 1 
-    return False # If loop completes, the chr is not present in the word
+    return False # The character is not present within the word
     
 # Named constants for emoji boxes
 WHITE_BOX: str = "\U00002B1C"
@@ -36,4 +36,4 @@ def emojified(secret_guess: str, secret: str) -> str:
             idx += 1
 
 
-    return emoji_str # Completed str comprised of corresponding emojis
+    return emoji_str # Completed string comprised of corresponding emojis
