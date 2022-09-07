@@ -28,7 +28,7 @@ def emojified(secret_guess: str, secret: str) -> str:
         if secret_guess[idx] == secret[idx]:
                 emoji_str += GREEN_BOX # Matching character at same index
                 idx += 1
-        elif contains_char(secret_guess, secret[idx]) == False:
+        elif contains_char(secret, secret_guess[idx]) == False:
             emoji_str += WHITE_BOX # Non-present character
             idx += 1
         else:
