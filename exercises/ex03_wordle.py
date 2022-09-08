@@ -8,6 +8,7 @@ def contains_char(searched_word: str, search_chr: str) -> bool:
     assert len(search_chr) == 1
     idx: int = 0  # Initialize index count to 0
     
+    # Runs while the index count is below the length of the searched word
     while idx < len(searched_word):
         if searched_word[idx] == search_chr:
             return True  # Character is present
@@ -28,6 +29,7 @@ def emojified(secret_guess: str, secret: str) -> str:
     idx: int = 0  # Initialize index count to 0
     emoji_str: str = ""  # Initialize empty string for eventual emoji output
     
+    # Runs while the index count is below the length of the secret word
     while idx < len(secret):
         if secret_guess[idx] == secret[idx]:
             emoji_str += GREEN_BOX  # Matching character at same index
@@ -59,6 +61,7 @@ def main() -> None:
     guess: str = ""  # Initialize empty string to hold user guess
     win = False  # Will become True if user guesses correctly
     
+    # Runs while the user is between turns 1-6 and has not won
     while turns < 7 and not win:
         print(f"=== Turn {turns}/6 ===")
         guess = input_guess(len(secret))  # User input assigned to guess
