@@ -56,7 +56,7 @@ def main() -> None:
     """The entrypoint of the program and main game loop."""
     turns: int = 1  # Turn count initilaized at 1
     secret: str = "codes"  # The secret the user is trying to guess
-    guess: str = "" # Initialize empty string to hold user guess
+    guess: str = ""  # Initialize empty string to hold user guess
     win = False  # Will become True if user guesses correctly
     
     while turns < 7 and win == False:
