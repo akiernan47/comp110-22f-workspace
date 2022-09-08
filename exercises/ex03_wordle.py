@@ -43,7 +43,12 @@ def emojified(secret_guess: str, secret: str) -> str:
 
 def input_guess(guess_len: int) -> int:
     """Will return a string (of an expected length) given by the user."""
+    
+    # Initial user prompt for a guess
     secret_guess: str = input(f"Enter a {guess_len} character word: ")
-    while len(secret_guess) != guess_len:
+    
+    # Runs until the input is of an expected length:
+    while len(secret_guess) != guess_len: 
         secret_guess = input(f"That wasn't {guess_len} chars! Try again: ")
-    return secret_guess
+    
+    return secret_guess  # String with expected length is returned
