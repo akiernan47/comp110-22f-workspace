@@ -59,7 +59,7 @@ def main() -> None:
     guess: str = ""  # Initialize empty string to hold user guess
     win = False  # Will become True if user guesses correctly
     
-    while turns < 7 and win == False:
+    while turns < 7 and win != True:
         print(f"=== Turn {turns}/6 ===")
         guess = input_guess(len(secret))  # User input assigned to guess
         print(emojified(guess, secret))  # Prints emoji string
@@ -69,10 +69,9 @@ def main() -> None:
             win = True  # win condition
             print(f"You won in {turns - 1}/6 turns!")
 
-    if win == False:
+    if win != True:
         # Program response for loss
         print("X/6 - Sorry, try again tomorrow!")
 
     if __name__ == "__main__":
         main()
-        
