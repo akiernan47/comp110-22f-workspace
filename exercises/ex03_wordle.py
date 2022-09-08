@@ -56,13 +56,13 @@ def input_guess(guess_len: int) -> str:
 
 def main() -> None:
     """The entrypoint of the program and main game loop."""
-    turns: int = 1  # Turn count initialized at 1
+    turn: int = 1  # Turn count initialized at 1
     secret: str = "codes"  # The secret the user is trying to guess
     guess: str = ""  # Initialize empty string to later hold user guess
     win = False  # Will become True if user guesses correctly
     
-    # Runs while the user is between turns 1-6 and has not won
-    while turns < 7 and not win:
+    # Runs while the user is between turn 1-6 and has not won
+    while turn < 7 and not win:
         print(f"=== Turn {turns}/6 ===")
         guess = input_guess(len(secret))  # User input assigned to guess
         print(emojified(guess, secret))  # Prints emoji string
