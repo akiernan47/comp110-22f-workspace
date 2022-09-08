@@ -42,7 +42,7 @@ def emojified(secret_guess: str, secret: str) -> str:
 
 
 def input_guess(guess_len: int) -> int:
-    secret_guess: str = input(f"What is your {guess_len}-letter guess? ")
+    secret_guess: str = input(f"Enter a {guess_len} character word: ")
     while len(secret_guess) != guess_len:
-        user_word = input(f"That was not {guess_len} letters! Try again: ")
+        user_word = input(f"That wasn't {guess_len} chars! Try again: ")
     return secret_guess
