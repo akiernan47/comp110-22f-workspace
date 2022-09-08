@@ -58,8 +58,17 @@ def main() -> None:
     secret: str = "codes"  # The secret the user is trying to guess
     guess: str = "" # Initialize empty string to hold user guess
     win = False  # Will become True if user guesses correctly
+    
     while turns < 7 and win == False:
         print(f"=== Turn {turns}/6 ===")
-        guess = input_guess(len(secret))
-        print(guess)
-        turns += 1
+        guess = input_guess(len(secret))  # User input assigned to guess
+        print(emojified(guess, secret))  # Prints emoji string
+        turns += 1  # Increment turn by 1
+        
+        if secret == guess:
+            win = True  # win condition
+            print(f"You won in {turns - 1}/6 turns!")
+
+    if win == False:
+        # Program response for loss
+        print("X/6 - Sorry, try again tomorrow!")
