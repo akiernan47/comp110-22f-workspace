@@ -7,7 +7,6 @@ def contains_char(searched_word: str, search_chr: str) -> bool:
     """Will search for the presence of a character within a given string of any length."""
     assert len(search_chr) == 1
     idx: int = 0  # Initialize index count to 0
-   
     while idx < len(searched_word):
         if searched_word[idx] == search_chr:
             return True  # Character is present
@@ -37,17 +36,14 @@ def emojified(secret_guess: str, secret: str) -> str:
         else:
             emoji_str += WHITE_BOX  # Non-present character
             idx += 1
-
     return emoji_str  # Completed string comprised of corresponding emojis
 
 
 def input_guess(guess_len: int) -> int:
     """Will return a string (of an expected length) given by the user."""
-    # Initial user prompt for a guess
+    # Initial user prompt for a guess:
     secret_guess: str = input(f"Enter a {guess_len} character word: ")
-
     # Runs until the input is of an expected length:
     while len(secret_guess) != guess_len: 
         secret_guess = input(f"That wasn't {guess_len} chars! Try again: ")
-    
     return secret_guess  # String with expected length is returned
