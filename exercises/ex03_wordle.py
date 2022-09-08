@@ -72,3 +72,7 @@ def main() -> None:
     if win == False:
         # Program response for loss
         print("X/6 - Sorry, try again tomorrow!")
+
+    if __name__ == "__main__":
+        main()
+        
