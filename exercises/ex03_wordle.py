@@ -4,7 +4,7 @@ __author__ = "730515426"
 
 
 def contains_char(searched_word: str, search_chr: str) -> bool:
-    """Will search for the presence of a character (search_chr), within a given string of any length (searched_word)."""
+    """Will search for the presence of a character within a given string of any length."""
     assert len(search_chr) == 1
     idx: int = 0  # Initialize index count to 0
    
@@ -23,7 +23,7 @@ YELLOW_BOX: str = "\U0001F7E8"
 
 
 def emojified(secret_guess: str, secret: str) -> str:
-    """Will return a string of emojis based on the accuracy of a user's guess of the secret word."""
+    """Will return a string of emojis based on the accuracy of the user's guess."""
     assert len(secret_guess) == len(secret)
     idx: int = 0  # Initialize index count to 0
     emoji_str: str = ""  # Initialize empty string for eventual emoji output
