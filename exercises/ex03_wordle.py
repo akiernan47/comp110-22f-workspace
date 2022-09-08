@@ -63,14 +63,14 @@ def main() -> None:
     
     # Runs while the user is between turn 1-6 and has not won
     while turn < 7 and not win:
-        print(f"=== Turn {turns}/6 ===")
+        print(f"=== Turn {turn}/6 ===")
         guess = input_guess(len(secret))  # User input assigned to guess
         print(emojified(guess, secret))  # Prints emoji string
-        turns += 1  # Increment turn by 1
+        turn += 1  # Increment turn by 1
         
         if secret == guess:
             win = True  # win condition
-            print(f"You won in {turns - 1}/6 turns!")
+            print(f"You won in {turn - 1}/6 turns!")
 
     if not win:
         # Program response for loss
