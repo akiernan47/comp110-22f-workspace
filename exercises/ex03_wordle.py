@@ -3,14 +3,14 @@
 __author__ = "730515426"
 
 
-def contains_char(searched_word: str, search_chr: str) -> bool:
+def contains_char(searched_word: str, search_char: str) -> bool:
     """Will search for the presence of a character within a given string of any length."""
-    assert len(search_chr) == 1
+    assert len(search_char) == 1
     idx: int = 0  # Initialize index count to 0
     
     # Runs while the index count is below the length of the searched word
     while idx < len(searched_word):
-        if searched_word[idx] == search_chr:
+        if searched_word[idx] == search_char:
             return True  # Character is present
         else:
             idx += 1 
