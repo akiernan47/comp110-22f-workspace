@@ -45,3 +45,4 @@ def input_guess(guess_len: int) -> int:
     secret_guess: str = input(f"What is your {guess_len}-letter guess? ")
     while len(secret_guess) != guess_len:
         user_word = input(f"That was not {guess_len} letters! Try again: ")
+    return secret_guess
