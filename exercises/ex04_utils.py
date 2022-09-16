@@ -40,7 +40,7 @@ def is_equal(list_one: list[int], list_two: list[int]) -> bool:
     i: int = 0
     
     if len(list_one) == len(list_two):
-    # Loop will check for a match at the same indexes for every item in the two lists
+        # Loop will check for a match at the same indexes for every item in the two lists
         while i < len(list_one):
             if list_one[i] == list_two[i]:
                 i += 1
