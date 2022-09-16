@@ -16,4 +16,3 @@ def all(int_list: list[int], given_int: int) -> bool:
             return False
     return True
 
-        
