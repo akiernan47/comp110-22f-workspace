@@ -20,7 +20,7 @@ def only_evens(given_list: list[int]) -> list[int]:
 
 def concat(ints_one: list[int], ints_two: list[int]) -> list[int]:
     """Returns new list containing all elements of the two lists."""
-    concat_list: list(int) = []
+    concat_list: list[int] = []
     one_i: int = 0
     two_i: int = 0
     while one_i < len(ints_one):
@@ -33,15 +33,15 @@ def concat(ints_one: list[int], ints_two: list[int]) -> list[int]:
 
 
 def sub(given_list: list[int], start: int, end: int) -> list[int]:
-    sub_list: list(int) = []
-    i: int = start
+    """Returns subset of a list based on given start and end value."""
+    sub_list: list[int] = []
     if len(given_list) == 0 and start > len(given_list) or end <= 0:
         return sub_list
     elif end > len(given_list):
-        end = len(given_list) - 1
+        end = len(given_list)
     elif start < 0:
         start = 0
-    while i < end:
-        sub_list.append(given_list[i])
-        i += 1
+    while start < end:
+        sub_list.append(given_list[start])
+        start += 1
     return sub_list
