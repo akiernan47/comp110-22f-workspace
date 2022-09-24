@@ -30,3 +30,18 @@ def concat(ints_one: list[int], ints_two: list[int]) -> list[int]:
         concat_list.append(ints_two[two_i])
         two_i += 1
     return concat_list
+
+
+def sub(given_list: list[int], start: int, end: int) -> list[int]:
+    sub_list: list(int) = []
+    i: int = start
+    if len(given_list) == 0 and start > len(given_list) or end <= 0:
+        return sub_list
+    elif end > len(given_list):
+        end = len(given_list) - 1
+    elif start < 0:
+        start = 0
+    while i < end:
+        sub_list.append(given_list[i])
+        i += 1
+    return sub_list

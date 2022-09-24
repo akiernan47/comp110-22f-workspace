@@ -3,8 +3,7 @@
 __author__ = "730515426"
 
 
-from utils import only_evens
-from utils import concat
+from utils import only_evens, sub, concat
 
 
 def test_only_evens_empty() -> None:
@@ -21,7 +20,7 @@ def test_only_evens_mix1() -> None:
 
 def test_only_evens_mix2() -> None:
     """Test for another list of mixed ints (odds and evens)."""
-    given_list: list(int) = [33, 55, 44, 66]
+    given_list: list(int) = [44, 66, 33, 55]
     assert only_evens(given_list) == [44, 66]
 
 
@@ -44,3 +43,27 @@ def test_concat_normal2() -> None:
     ints_one: list(int) = [1, 3, 5]
     ints_two: list(int) = [3, 1]
     assert concat(ints_one, ints_two) == [1, 3, 5, 3, 1]
+
+
+def test_sub_empty() -> None:
+    """Test for empty given list."""
+    given_list: list(int) = []
+    start: int = 0
+    end: int = 5
+    assert sub(given_list, start, end) == []
+
+
+def test_sub_normal1() -> None:
+    """Test for an expected list and start/stop case."""
+    given_list: list(int) = [1, 2, 3, 4]
+    start: int = 0
+    end: int = 2
+    assert sub(given_list, start, end) == [1, 2]
+
+
+def test_sub_normal2() -> None:
+    """Test for an expected list and start/stop case."""
+    given_list: list(int) = [3, 2, 4, 1, 0]
+    start: int = 1
+    end: int = 3
+    assert sub(given_list, start, end) == [2, 4]
