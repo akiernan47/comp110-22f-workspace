@@ -10,6 +10,7 @@ points: int = 0
 def main() -> None:
     """Will drive the program."""
     greet()
+    global points
     play: bool = True
     while play: 
         print(f"\n {points}")
@@ -25,11 +26,6 @@ def main() -> None:
             print("nada")
             
     
-    
- 
-
-
-
 def greet() -> None:
     """Greets user and prompts for their name."""
     print("Welcome to the number guessing game! ")
