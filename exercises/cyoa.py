@@ -11,19 +11,19 @@ def main() -> None:
     """Will drive the program."""
     greet()
     play: bool = True
-    while play:
-        print(f"\n Current points: {points}")
+    while play: 
+        print(f"\n {points}")
         choice: str = input(" \n 1. Custom procedure \n 2. Custom Function \n 3. Quit \n Desired option: ")
         if choice == "1":
             print("1 done")
         elif choice == "2":
-            print("2")
+            print("2 done")
         elif choice == "3":
-            print("3")
+            print("You accumulated whatever points")
             play = False
         else:
             print("nada")
-            choice = input(" \n 1. Custom procedure \n 2. Custom Function \n 3. Quit \n Desired option: ")
+            
     
     
  
