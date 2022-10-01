@@ -13,17 +13,17 @@ def main() -> None:
     global points
     play: bool = True
     while play: 
-        print(f"\n {points}")
-        choice: str = input(" \n 1. Custom procedure \n 2. Custom Function \n 3. Quit \n Desired option: ")
+        print(f"\n Current points: {points}")
+        choice: str = input(" \n 1. Learn the rules & gain points \n 2. Real Game \n 3. Quit \n Desired option: ")
         if choice == "1":
             print("1 done")
         elif choice == "2":
             print("2 done")
         elif choice == "3":
-            print("You accumulated whatever points")
+            print(f"\n Accumulated points: {points} \n Thanks for playing {player}")
             play = False
         else:
-            print("nada")
+            print("Invalid option, please choose again. \n")
             
     
 def greet() -> None:
@@ -31,6 +31,10 @@ def greet() -> None:
     print("Welcome to the number guessing game! ")
     global player
     player = input("Enter your name: ")
+
+
+def practice() -> None:
+    """Allows user to gain points through guessing game."""
 
 
 if __name__ == "__main__":
