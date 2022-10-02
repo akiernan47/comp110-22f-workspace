@@ -38,7 +38,7 @@ def main() -> None:
             points = encounter(points)
         elif choice == "3":
             print(f"\n A Comp 110 troll {TROLL}  still lingers... ")
-            print(f"\n Accumulated training points (current life): {points} \n Thanks for playing {player}")
+            print(f"\n Accumulated training points (current life): {points} \n Thanks for playing {player}!")
             play = False
         else:
             print("Invalid option, please choose again. \n")
@@ -48,13 +48,13 @@ def greet() -> None:
     """Greets user and prompts for their name."""
     print(f"Oh no! An infamous COMP 110 troll is coming back to UNC, you must prepare to defeat it! {TROLL} ")
     print("You, yes you the user, is our only hope for salvation!")
-    print("Luckily, ALERT Carolina will send out some information about the troll's power")
+    print("Luckily, ALERT Carolina will send out some information about the troll's power!")
     global player
     player = input("Enter your name brave venturer: ")
 
 
 def train() -> None:
-    """Allows user to gain points through probability."""
+    """Allows user to gain points through training skills."""
     global points
     global defense
     global attack
@@ -79,20 +79,22 @@ def train() -> None:
             points += neg_change
             print(f"Why'd you pick that one? {ANGUISHED}")
         else:
-            print("No stat improvement, invalid selection")
+            print("No stat improvement, invalid selection.")
     elif selection == "2":
         print("1. Receive instruction and equipment from the US Navy Seals \n2. Use the punching bag in your parent's basement for 5 minutes")
         method_d: str = input(f"\n{player}, how will you improve your attack? ")
         if method_d == "1":
             attack += large_change
             points += large_change
+            print("Great choice!")
         elif method_d == "2":
             attack += small_change
             points += small_change
+            print("Ok? As long as you're happy.")
         else:
-            print("No stat improvement, invalid selection")
+            print("No stat improvement, invalid selection.")
     else:
-        print("No stat improvement, invalid selection")
+        print("No stat improvement, invalid selection.")
 
 
 def encounter(player_power: int) -> int:
