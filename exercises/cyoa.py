@@ -46,7 +46,7 @@ def main() -> None:
     
 def greet() -> None:
     """Greets user and prompts for their name."""
-    print(f"Oh no! An infamous COMP 110 troll is coming back to destroy the course {ANGUISHED}, you must prepare to defeat it! {TROLL} ")
+    print(f"Oh no! An infamous COMP 110 troll is coming to destroy the course {ANGUISHED}, you must prepare to defeat it! {TROLL} ")
     print("You, yes you the user, is our only hope for salvation!")
     print("Luckily, ALERT Carolina will send out some information about the troll's power!")
     global player
@@ -61,7 +61,7 @@ def train() -> None:
     large_change: int = randint(30, 100)
     mid_change: int = randint(10, 30)
     small_change: int = randint(1, 10)
-    neg_change: int = -100
+    neg_change: int = randint(-50, -1)
     selection: str = input(f"\n{player}, do you want to improve your defense(1) or attack(2)? ")
     if selection == "1":
         print("1. Cybernetically enhance the durability of a body part\n2. Create a piece of armor from junkyard scraps\n3. Learn from UNC's football team ")
@@ -69,28 +69,28 @@ def train() -> None:
         if method_a == "1":
             user_defense += large_change
             points += large_change
-            print("Great choice!")
+            print(f"Great choice {player}!")
         elif method_a == "2":
             user_defense += mid_change
             points += mid_change
-            print("Alright choice")
+            print(f"Decent choice {player}")
         elif method_a == "3":
             user_defense += neg_change
             points += neg_change
-            print("Why'd you pick that one?")
+            print(f"Not so great choice {player}, now your defense is worse!")
         else:
             print("No stat improvement, invalid selection.")
     elif selection == "2":
-        print("1. Receive instruction and equipment from the US Navy Seals \n2. Use the punching bag in your parent's basement for 5 minutes")
+        print("1. Receive instruction and equipment from the US Navy Seals \n2. Practice on the punching bag in your parent's basement for 5 minutes")
         method_d: str = input(f"\n{player}, how will you improve your attack? ")
         if method_d == "1":
             user_attack += large_change
             points += large_change
-            print("Great choice!")
+            print(f"Great choice {player}!")
         elif method_d == "2":
             user_attack += small_change
             points += small_change
-            print("Ok? As long as you're happy.")
+            print(f"Interesting choice, I guess you're a bit better off {player}.")
         else:
             print("No stat improvement, invalid selection.")
     else:
