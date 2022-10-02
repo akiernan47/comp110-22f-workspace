@@ -11,12 +11,18 @@ GRAVE = "\U0001FAA6"
 LIGHTNING = "\U000026A1"
 ALERT = "\U0001F6A8"
 ANGUISHED = "\U0001F631"
+SHIELD = "\U000026E8"
+SWORDS = "\U00002694"
 player: str = ""
 points: int = 0
 troll_health: int = randint(10, 100)
 troll_attack: int = randint(10, 100)
 user_defense: int = 0
 user_attack: int = 0
+large_change: int = randint(30, 70)
+mid_change: int = randint(10, 30)
+small_change: int = randint(1, 10)
+neg_change: int = randint(-50, -1)
 
 
 def main() -> None:
@@ -30,10 +36,15 @@ def main() -> None:
         print(f"{ALERT}{ALERT}{ALERT} Alert Carolina {ALERT}{ALERT}{ALERT}")
         print(f"Troll's {TROLL}  defense: {troll_health} & attack: {troll_attack}")
         print(f"{player}'s defense: {user_defense} & attack: {user_attack}")
-        choice: str = input(" \n 1. Improve your skills \n 2. Test your might and face the beast \n 3. Throw in the towel and leave it to the UTAs (Quit) \n Desired option: ")
+        choice: str = input(f" \n 1. Improve your skills \n 2. Test your might and face the beast {TROLL} \n 3. Throw in the towel and leave it to the UTAs (Quit) \n Desired option: ")
         if choice == "1":
-            train()
-            print(f"{player}'s defense: {user_defense} & attack: {user_attack}")
+            skill_type: str = input(f"\n{player}, improve your defense (1) or attack (2) ? ")
+            if skill_type == "1":
+                train_defense()
+            elif skill_type == "2":
+                train_attack()
+            else:
+                print(f"Invalid selection, no stat improvement {player}")
         elif choice == "2":
             points = encounter(points)
         elif choice == "3":
@@ -53,46 +64,43 @@ def greet() -> None:
     player = input("Enter your name brave venturer: ")
 
 
-def train() -> None:
-    """Allows user to gain points through training skills."""
+def train_defense() -> None:
+    """Allows user to improve defense stat through a choice."""
     global points
-    global user_defense
     global user_attack
-    large_change: int = randint(30, 100)
-    mid_change: int = randint(10, 30)
-    small_change: int = randint(1, 10)
-    neg_change: int = randint(-50, -1)
-    selection: str = input(f"\n{player}, do you want to improve your defense(1) or attack(2)? ")
-    if selection == "1":
-        print("1. Cybernetically enhance the durability of a body part\n2. Create a piece of armor from junkyard scraps\n3. Learn from UNC's football team ")
-        method_a: str = input(f"\n{player}, how will you improve your defense? ")
-        if method_a == "1":
-            user_defense += large_change
-            points += large_change
-            print(f"Great choice {player}!")
-        elif method_a == "2":
-            user_defense += mid_change
-            points += mid_change
-            print(f"Decent choice {player}")
-        elif method_a == "3":
-            user_defense += neg_change
-            points += neg_change
-            print(f"Not so great choice {player}, now your defense is worse!")
-        else:
-            print("No stat improvement, invalid selection.")
-    elif selection == "2":
-        print("1. Receive instruction and equipment from the US Navy Seals \n2. Practice on the punching bag in your parent's basement for 5 minutes")
-        method_d: str = input(f"\n{player}, how will you improve your attack? ")
-        if method_d == "1":
-            user_attack += large_change
-            points += large_change
-            print(f"Great choice {player}!")
-        elif method_d == "2":
-            user_attack += small_change
-            points += small_change
-            print(f"Interesting choice, I guess you're a bit better off {player}.")
-        else:
-            print("No stat improvement, invalid selection.")
+    global user_defense
+    print("1. Cybernetically enhance the durability of a body part\n2. Create a piece of armor from junkyard scraps\n3. Learn from UNC's football team ")
+    method_a: str = input(f"\n{player}, how will you improve your defense {SHIELD} ? ")
+    if method_a == "1":
+        user_defense += large_change
+        points += large_change
+        print(f"Great choice {player}!")
+    elif method_a == "2":
+        user_defense += mid_change
+        points += mid_change
+        print(f"Decent choice {player}")
+    elif method_a == "3":
+        user_defense += neg_change
+        points += neg_change
+        print(f"Not so great choice {player}, now your defense is worse!")
+    else:
+        print("No stat improvement, invalid selection.")
+
+
+def train_attack() -> None:
+    global points
+    global user_attack
+    global user_defense
+    print("1. Receive instruction and equipment from the US Navy Seals \n2. Practice on the punching bag in your parent's basement for 5 minutes")
+    method_d: str = input(f"\n{player}, how will you improve your attack {SWORDS} ? ")
+    if method_d == "1":
+        user_attack += large_change
+        points += large_change
+        print(f"Great choice {player}!")
+    elif method_d == "2":
+        user_attack += small_change
+        points += small_change
+        print(f"Interesting choice, I guess you're a bit better off {player}.")
     else:
         print("No stat improvement, invalid selection.")
 
@@ -130,7 +138,7 @@ def encounter(player_power: int) -> int:
             player_power = 0
             return player_power
     else:
-        print(f"Due to your improper strategy, the troll {TROLL}  ambushed you. You have been defeated.")
+        print(f"Due to your inability to pick a proper strategy, the troll {TROLL}  ambushed you. You have been defeated.")
         print(f"Your grave is struck by lightning {GRAVE}{LIGHTNING}, you come back to life at base stats.")
         user_defense = 0
         user_attack = 0
