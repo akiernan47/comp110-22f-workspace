@@ -15,8 +15,8 @@ player: str = ""
 points: int = 0
 troll_health: int = randint(10, 100)
 troll_attack: int = randint(10, 100)
-defense: int = 0
-attack: int = 0
+user_defense: int = 0
+user_attack: int = 0
 
 
 def main() -> None:
@@ -29,11 +29,11 @@ def main() -> None:
         print(f"\n{player}'s training points: {points}")
         print(f"{ALERT}{ALERT}{ALERT} Alert Carolina {ALERT}{ALERT}{ALERT}")
         print(f"Troll's {TROLL}  defense: {troll_health} & attack: {troll_attack}")
-        print(f"{player}'s defense: {defense} & attack: {attack}")
+        print(f"{player}'s defense: {user_defense} & attack: {user_attack}")
         choice: str = input(" \n 1. Improve your skills \n 2. Test your might and face the beast \n 3. Throw in the towel and leave it to the UTAs (Quit) \n Desired option: ")
         if choice == "1":
             train()
-            print(f"{player}'s defense: {defense} & attack: {attack}")
+            print(f"{player}'s defense: {user_defense} & attack: {user_attack}")
         elif choice == "2":
             points = encounter(points)
         elif choice == "3":
@@ -56,8 +56,8 @@ def greet() -> None:
 def train() -> None:
     """Allows user to gain points through training skills."""
     global points
-    global defense
-    global attack
+    global user_defense
+    global user_attack
     large_change: int = randint(30, 100)
     mid_change: int = randint(10, 30)
     small_change: int = randint(1, 10)
@@ -67,15 +67,15 @@ def train() -> None:
         print("1. Cybernetically enhance the durability of a body part\n2. Create a piece of armor from junkyard scraps\n3. Take notes on the defense of UNC's football team ")
         method_a: str = input(f"\n{player}, how will you improve your defense? ")
         if method_a == "1":
-            defense += large_change
+            user_defense += large_change
             points += large_change
             print("Great choice!")
         elif method_a == "2":
-            defense += mid_change
+            user_defense += mid_change
             points += mid_change
             print("Alright choice")
         elif method_a == "3":
-            defense += neg_change
+            user_defense += neg_change
             points += neg_change
             print(f"Why'd you pick that one? {ANGUISHED}")
         else:
@@ -84,11 +84,11 @@ def train() -> None:
         print("1. Receive instruction and equipment from the US Navy Seals \n2. Use the punching bag in your parent's basement for 5 minutes")
         method_d: str = input(f"\n{player}, how will you improve your attack? ")
         if method_d == "1":
-            attack += large_change
+            user_attack += large_change
             points += large_change
             print("Great choice!")
         elif method_d == "2":
-            attack += small_change
+            user_attack += small_change
             points += small_change
             print("Ok? As long as you're happy.")
         else:
@@ -101,8 +101,8 @@ def encounter(player_power: int) -> int:
     """Outlines different possibilities for the creature encounter."""
     global troll_health
     global troll_attack
-    global defense
-    global attack
+    global user_defense
+    global user_attack
     print()
     strategy: str = input(f"{player}, do you fight the troll {TROLL}  head-to-head (1) or use a surprise attack (2): ")
     if strategy == "1":
@@ -114,26 +114,26 @@ def encounter(player_power: int) -> int:
         else:
             print("The troll overpowers you in battle and strikes you down. You have been defeated.")
             print(f"An angel {ANGEL} has come to revive you! You come back to life at base stats.")
-            defense = 0
-            attack = 0
+            user_defense = 0
+            user_attack = 0
             player_power = 0
             return player_power
     elif strategy == "2":
-        if attack > troll_health:
+        if user_attack > troll_health:
             print(f"You defeated the troll {TROLL}  in one swift blow, great job! \nUnfortunately, another troll has entered the fray")
             return player_power
         else:
             print(f"Your attack merely made a scratch, the troll {TROLL}  counters and defeats you")
             print(f"A mage {MAGE} approaches your body and uses a resurrection spell! You come back to life at base stats.")
-            defense = 0
-            attack = 0
+            user_defense = 0
+            user_attack = 0
             player_power = 0
             return player_power
     else:
         print(f"Due to your improper strategy, the troll {TROLL}  ambushed you. You have been defeated.")
         print(f"Your grave is struck by lightning {GRAVE}{LIGHTNING}, you come back to life at base stats.")
-        defense = 0
-        attack = 0
+        user_defense = 0
+        user_attack = 0
         player_power = 0
         return player_power
 
