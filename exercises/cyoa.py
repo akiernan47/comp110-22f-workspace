@@ -64,7 +64,7 @@ def train() -> None:
     neg_change: int = -100
     selection: str = input(f"\n{player}, do you want to improve your defense(1) or attack(2)? ")
     if selection == "1":
-        print("1. Cybernetically enhance the durability of a body part\n2. Create a piece of armor from junkyard scraps\n3. Take notes on the defense of UNC's football team ")
+        print("1. Cybernetically enhance the durability of a body part\n2. Create a piece of armor from junkyard scraps\n3. Learn from UNC's football team ")
         method_a: str = input(f"\n{player}, how will you improve your defense? ")
         if method_a == "1":
             user_defense += large_change
