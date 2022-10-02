@@ -46,7 +46,7 @@ def main() -> None:
     
 def greet() -> None:
     """Greets user and prompts for their name."""
-    print(f"Oh no! An infamous COMP 110 troll is coming back to UNC, you must prepare to defeat it! {TROLL} ")
+    print(f"Oh no! An infamous COMP 110 troll is coming back to destroy the course {ANGUISHED}, you must prepare to defeat it! {TROLL} ")
     print("You, yes you the user, is our only hope for salvation!")
     print("Luckily, ALERT Carolina will send out some information about the troll's power!")
     global player
@@ -77,7 +77,7 @@ def train() -> None:
         elif method_a == "3":
             user_defense += neg_change
             points += neg_change
-            print(f"Why'd you pick that one? {ANGUISHED}")
+            print("Why'd you pick that one?")
         else:
             print("No stat improvement, invalid selection.")
     elif selection == "2":
