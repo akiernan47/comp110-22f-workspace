@@ -118,7 +118,7 @@ def encounter(player_power: int) -> int:
             return player_power
     elif strategy == "2":
         if attack > troll_health:
-            print(f"You defeated the troll {TROLL}  in one swift blow, great job! \nAnother troll has entered the fray")
+            print(f"You defeated the troll {TROLL}  in one swift blow, great job! \nUnfortunately, another troll has entered the fray")
             return player_power
         else:
             print(f"Your attack merely made a scratch, the troll {TROLL}  counters and defeats you")
