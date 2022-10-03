@@ -19,10 +19,10 @@ troll_health: int = randint(10, 100)
 troll_attack: int = randint(10, 100)
 user_defense: int = 0
 user_attack: int = 0
-large_change: int = randint(45, 70)
-mid_change: int = randint(10, 30)
-small_change: int = randint(1, 10)
-neg_change: int = randint(-50, -1)
+large_change: int = 50
+mid_change: int = 25
+small_change: int = 10
+neg_change: int = -50
 
 
 def main() -> None:
