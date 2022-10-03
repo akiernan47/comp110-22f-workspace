@@ -21,7 +21,7 @@ user_defense: int = 0
 user_attack: int = 0
 large_change: int = 50
 mid_change: int = 25
-small_change: int = 10
+small_change: int = 1
 neg_change: int = -50
 
 
@@ -36,18 +36,14 @@ def main() -> None:
         print(f"{ALERT}{ALERT}{ALERT} Alert Carolina {ALERT}{ALERT}{ALERT}")
         print(f"Troll's {TROLL}  defense: {troll_health} & attack: {troll_attack}")
         print(f"{player}'s defense: {user_defense} & attack: {user_attack}")
-        choice: str = input(f" \n 1. Improve your skills \n 2. Test your might and face the beast {TROLL} \n 3. Throw in the towel and leave it to the UTAs (Quit) \n Desired option: ")
+        choice: str = input(f" \n 1. Improve your defense \n 2. Improve your atttack \n 3. Test your might and face the beast {TROLL} \n 4. Throw in the towel and leave it to the UTAs (Quit) \n Desired option: ")
         if choice == "1":
-            skill_type: str = input(f"\n{player}, improve your defense (1) or attack (2) ? ")
-            if skill_type == "1":
-                train_defense()
-            elif skill_type == "2":
-                train_attack()
-            else:
-                print(f"Invalid selection, no stat improvement {player}")
+            train_defense()
         elif choice == "2":
-            points = encounter(points)
+            train_attack()
         elif choice == "3":
+            points = encounter(points)
+        elif choice == "4":
             print(f"\n A Comp 110 troll {TROLL}  still lingers... ")
             print(f"\n Final training stat points: {points} \n Thanks for playing {player}!")
             play = False
@@ -67,9 +63,8 @@ def greet() -> None:
 def train_defense() -> None:
     """Allows user to improve defense stat through a choice."""
     global points
-    global user_attack
     global user_defense
-    print("1. Cybernetically enhance the durability of a body part\n2. Create a piece of armor from junkyard scraps\n3. Learn from UNC's football team ")
+    print("\n1. Cybernetically enhance the durability of a body part\n2. Create a piece of armor from junkyard scraps\n3. Learn from UNC's football team ")
     method_d: str = input(f"\n{player}, how will you improve your defense {SHIELD} ? ")
     if method_d == "1":
         user_defense += large_change
@@ -88,11 +83,9 @@ def train_defense() -> None:
 
 
 def train_attack() -> None:
-    """Allows user to improve attack stat through a choice."""
-    global points
+    global points 
     global user_attack
-    global user_defense
-    print("1. Receive instruction and equipment from the US Navy Seals \n2. Practice on the punching bag in your parent's basement for 5 minutes")
+    print("\n1. Receive instruction and equipment from the US Navy Seals \n2. Practice on the punching bag in your parent's basement for 5 minutes")
     method_a: str = input(f"\n{player}, how will you improve your attack {SWORDS} ? ")
     if method_a == "1":
         user_attack += large_change
