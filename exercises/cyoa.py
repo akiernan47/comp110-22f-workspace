@@ -19,7 +19,7 @@ troll_health: int = randint(10, 100)
 troll_attack: int = randint(10, 100)
 user_defense: int = 0
 user_attack: int = 0
-large_change: int = randint(30, 70)
+large_change: int = randint(45, 70)
 mid_change: int = randint(10, 30)
 small_change: int = randint(1, 10)
 neg_change: int = randint(-50, -1)
@@ -49,7 +49,7 @@ def main() -> None:
             points = encounter(points)
         elif choice == "3":
             print(f"\n A Comp 110 troll {TROLL}  still lingers... ")
-            print(f"\n Accumulated training points (current life): {points} \n Thanks for playing {player}!")
+            print(f"\n Final training stat points: {points} \n Thanks for playing {player}!")
             play = False
         else:
             print("Invalid option, please choose again. \n")
@@ -70,16 +70,16 @@ def train_defense() -> None:
     global user_attack
     global user_defense
     print("1. Cybernetically enhance the durability of a body part\n2. Create a piece of armor from junkyard scraps\n3. Learn from UNC's football team ")
-    method_a: str = input(f"\n{player}, how will you improve your defense {SHIELD} ? ")
-    if method_a == "1":
+    method_d: str = input(f"\n{player}, how will you improve your defense {SHIELD} ? ")
+    if method_d == "1":
         user_defense += large_change
         points += large_change
         print(f"Great choice {player}!")
-    elif method_a == "2":
+    elif method_d == "2":
         user_defense += mid_change
         points += mid_change
         print(f"Decent choice {player}")
-    elif method_a == "3":
+    elif method_d == "3":
         user_defense += neg_change
         points += neg_change
         print(f"Not so great choice {player}, now your defense is worse!")
@@ -88,16 +88,17 @@ def train_defense() -> None:
 
 
 def train_attack() -> None:
+    """Allows user to improve attack stat through a choice."""
     global points
     global user_attack
     global user_defense
     print("1. Receive instruction and equipment from the US Navy Seals \n2. Practice on the punching bag in your parent's basement for 5 minutes")
-    method_d: str = input(f"\n{player}, how will you improve your attack {SWORDS} ? ")
-    if method_d == "1":
+    method_a: str = input(f"\n{player}, how will you improve your attack {SWORDS} ? ")
+    if method_a == "1":
         user_attack += large_change
         points += large_change
         print(f"Great choice {player}!")
-    elif method_d == "2":
+    elif method_a == "2":
         user_attack += small_change
         points += small_change
         print(f"Interesting choice, I guess you're a bit better off {player}.")
@@ -128,7 +129,9 @@ def encounter(player_power: int) -> int:
             return player_power
     elif strategy == "2":
         if user_attack > troll_health:
-            print(f"You defeated the troll {TROLL}  in one swift blow, great job! \nUnfortunately, another troll has entered the fray")
+            print(f"You defeated the troll {TROLL}  in one swift blow, great job! \nUnfortunately, another troll has entered the fray...")
+            troll_health = randint(10, 100)
+            troll_attack = randint(10, 100)
             return player_power
         else:
             print(f"Your attack merely made a scratch, the troll {TROLL}  counters and defeats you")
