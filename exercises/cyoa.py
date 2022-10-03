@@ -113,7 +113,7 @@ def encounter(player_power: int) -> int:
     global user_defense
     global user_attack
     print()
-    strategy: str = input(f"{player}, do you fight the troll {TROLL}  head-to-head (1) or use a surprise attack (2): ")
+    strategy: str = input(f"{player}, do you fight the troll {TROLL}  head-to-head (1) or go for surprise attack (2): ")
     if strategy == "1":
         if player_power > troll_health + troll_attack:
             print("Wohoo, you have vanquished the troll!! \nBut another one has appeared...")
