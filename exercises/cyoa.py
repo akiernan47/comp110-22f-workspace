@@ -83,6 +83,7 @@ def train_defense() -> None:
 
 
 def train_attack() -> None:
+    """Allows the user to improve attack stat through choice."""
     global points 
     global user_attack
     print("\n1. Receive instruction and equipment from the US Navy Seals \n2. Practice on the punching bag in your parent's basement for 5 minutes")
