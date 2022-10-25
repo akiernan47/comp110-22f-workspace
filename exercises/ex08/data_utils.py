@@ -41,7 +41,7 @@ def head(data: dict[str, list[str]], amount: int) -> dict[str, list[str]]:
     for key in data:
         new_values: list[str] = []
         i: int = 0
-        if amount >= len(data):
+        if amount >= len(data[key]):
             output = data
             return output
         while i < amount:
