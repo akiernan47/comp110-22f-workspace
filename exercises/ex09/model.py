@@ -41,7 +41,10 @@ class Cell:
     # Its purpose is to reassign the object's location attribute
     # the result of adding the self object's location with its
     # direction. Hint: Look at the add method.
-        
+    def tick(self) -> None:
+        self.location = self.location.add(self.direction)
+
+
     def color(self) -> str:
         """Return the color representation of a cell."""
         return "black"
@@ -65,6 +68,8 @@ class Model:
     def tick(self) -> None:
         """Update the state of the simulation by one time step."""
         self.time += 1
+        for cell in self.population:
+            cell.tick()
 
     def random_location(self) -> Point:
         """Generate a random location."""
