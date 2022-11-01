@@ -56,7 +56,7 @@ class Model:
     def __init__(self, cells: int, speed: float):
         """Initialize the cells with random locations and directions."""
         self.population = []
-        for i in range(cells):
+        for _ in range(cells):
             start_location: Point = self.random_location()
             start_direction: Point = self.random_direction(speed)
             cell: Cell = Cell(start_location, start_direction)
@@ -68,13 +68,16 @@ class Model:
 
     def random_location(self) -> Point:
         """Generate a random location."""
-        # TODO
-        return Point(0.0, 0.0)
+        start_x: float = random() * constants.BOUNDS_WIDTH - constants.MAX_X
+        start_y: float = random() * constants.BOUNDS_HEIGHT - constants.MAX_Y
+        return Point(start_x, start_y)
 
     def random_direction(self, speed: float) -> Point:
         """Generate a 'point' used as a directional vector."""
-        # TODO
-        return Point(0.0, 0.0)
+        random_angle: float = 2.0 * pi * random()
+        direction_x: float = cos(random_angle) * speed
+        direction_y: float = sin(random_angle) * speed
+        return Point(direction_x, direction_y)
 
     def enforce_bounds(self, cell: Cell) -> None:
         """Cause a cell to 'bounce' if it goes out of bounds."""
