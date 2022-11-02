@@ -70,6 +70,7 @@ class Model:
         self.time += 1
         for cell in self.population:
             cell.tick()
+            self.enforce_bounds(cell)
 
     def random_location(self) -> Point:
         """Generate a random location."""
@@ -86,7 +87,18 @@ class Model:
 
     def enforce_bounds(self, cell: Cell) -> None:
         """Cause a cell to 'bounce' if it goes out of bounds."""
-        ...
+        if cell.location.x > constants.MAX_X:
+            cell.location.x = constants.MAX_X
+            cell.direction.x *= -1.0
+        elif cell.location.x < constants.MIN_X:
+            cell.location.x = constants.MIN_X
+            cell.direction.x *= -1.0
+        elif cell.location.y > constants.MAX_Y:
+            cell.location.y = constants.MAX_Y
+            cell.direction.y *= -1.0
+        elif cell.location.y < constants.MIN_Y:
+            cell.location.y = constants.MIN_Y
+            cell.direction.y *= -1.0
 
     def is_complete(self) -> bool:
         """Method to indicate when the simulation is complete."""
