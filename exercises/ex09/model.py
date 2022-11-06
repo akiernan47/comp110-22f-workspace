@@ -38,14 +38,15 @@ class Cell:
     direction: Point
     sickness: int = constants.VULNERABLE
 
-    def __init__(self, location: Point, direction: Point) -> None:
+    def __init__(self, location: Point, direction: Point):
         """Construct a cell with its location and direction."""
-        self.location: Point = location
-        self.direction: Point = direction
+        self.location = location
+        self.direction = direction
 
     def contract_disease(self) -> None:
         """Cell has become infected."""
-        self.sickness: int = constants.INFECTED
+        self.sickness = constants.INFECTED
+        return None
 
     def is_vulnerable(self) -> bool:
         """Cell is vulnerable."""
@@ -68,15 +69,16 @@ class Cell:
         elif self.is_immune():
             return "blue"
         else:
-            return ""
+            return "None"
 
     def tick(self) -> None:
         """New location after tick based on direction."""
-        self.location: Point = self.location.add(self.direction)
+        self.location = self.location.add(self.direction)
         if self.is_infected():
             self.sickness += 1
         if self.sickness > constants.RECOVERY_PERIOD:
             self.immunize()
+        return None
 
     def contact_with(self, other: Cell) -> None:
         """Determines conditions of contact."""
@@ -84,10 +86,12 @@ class Cell:
             other.contract_disease()
         elif self.is_vulnerable() and other.is_infected():
             self.contract_disease()
+        return None
 
     def immunize(self) -> None:
         """Cell becomes immune."""
-        self.sickness: int = constants.IMMUNE
+        self.sickness = constants.IMMUNE
+        return None
 
     def is_immune(self) -> bool:
         """Checks for immunity."""
@@ -102,29 +106,29 @@ class Model:
     population: list[Cell]
     time: int = 0
 
-    def __init__(self, cells: int, speed: float, infected: int, protected: int = 0) -> None:
+    def __init__(self, cells: int, speed: float, infected: int, protected: int = 0):
         """Initialize the cells with random locations and directions."""
         self.population: list[Cell] = []
         if infected >= cells or infected <= 0 or (protected + infected) >= cells or protected >= cells or protected < 0:
             raise ValueError("Improper starting value(s) of immune/infected cells") 
         for _ in range(protected):
-            start_location: Point = self.random_location()
-            start_direction: Point = self.random_direction(speed)
-            cell: Cell = Cell(start_location, start_direction)
-            cell.immunize()
-            self.population.append(cell)
+            start_location1: Point = self.random_location()
+            start_direction1: Point = self.random_direction(speed)
+            cell_imm: Cell = Cell(start_location1, start_direction1)
+            cell_imm.immunize()
+            self.population.append(cell_imm)
         for _ in range(cells - (protected + infected)):
-            start_location: Point = self.random_location()
-            start_direction: Point = self.random_direction(speed)
-            cell: Cell = Cell(start_location, start_direction)
+            start_location2: Point = self.random_location()
+            start_direction2: Point = self.random_direction(speed)
+            cell: Cell = Cell(start_location2, start_direction2)
             self.population.append(cell)
         for _ in range(infected):
-            start_location: Point = self.random_location()
-            start_direction: Point = self.random_direction(speed)
-            cell: Cell = Cell(start_location, start_direction)
-            cell.contract_disease()
-            self.population.append(cell)
-        
+            start_location3: Point = self.random_location()
+            start_direction3: Point = self.random_direction(speed)
+            cell_inf: Cell = Cell(start_location3, start_direction3)
+            cell_inf.contract_disease()
+            self.population.append(cell_inf)
+            
     def tick(self) -> None:
         """Update the state of the simulation by one time step."""
         self.time += 1
@@ -132,6 +136,7 @@ class Model:
             cell.tick()
             self.enforce_bounds(cell)
         self.check_contacts()
+        return None
 
     def random_location(self) -> Point:
         """Generate a random location."""
