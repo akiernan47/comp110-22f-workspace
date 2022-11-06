@@ -14,22 +14,22 @@ class Point:
     x: float
     y: float
 
-
-    def __init__(self, x: float, y: float) -> None:
+    def __init__(self, x: float, y: float):
         """Construct a point with x, y coordinates."""
-        self.x = x
-        self.y = y
-
+        self.x: float = x
+        self.y: float = y
 
     def add(self, other: Point) -> Point:
         """Add two Point objects together and return a new Point."""
-        x: float = self.x + other.x
-        y: float = self.y + other.y
-        return Point(x, y)
-
+        xs: float = self.x + other.x
+        ys: float = self.y + other.y
+        result: Point = Point(xs, ys)
+        return result
 
     def distance(self, other: Point) -> float:
-        return sqrt((other.x - self.x)**2 + (other.y - self.y)**2)
+        """Returns the distance between 2 points."""
+        result: float = sqrt((other.x - self.x)**2 + (other.y - self.y)**2)
+        return result
 
 
 class Cell:
@@ -40,14 +40,12 @@ class Cell:
 
     def __init__(self, location: Point, direction: Point) -> None:
         """Construct a cell with its location and direction."""
-        self.location = location
-        self.direction = direction
-
+        self.location: Point = location
+        self.direction: Point = direction
 
     def contract_disease(self) -> None:
         """Cell has become infected."""
-        self.sickness = constants.INFECTED
-
+        self.sickness: int = constants.INFECTED
 
     def is_vulnerable(self) -> bool:
         """Cell is vulnerable."""
@@ -55,13 +53,11 @@ class Cell:
             return True
         return False
 
-
     def is_infected(self) -> bool:
         """Cell is infected."""
         if self.sickness >= constants.INFECTED:
             return True
         return False
-
 
     def color(self) -> str:
         """Return the color representation of a cell."""
@@ -69,31 +65,32 @@ class Cell:
             return "red"
         elif self.is_vulnerable():
             return "gray"
-        else:
+        elif self.is_immune():
             return "blue"
-
+        else:
+            return ""
 
     def tick(self) -> None:
         """New location after tick based on direction."""
-        self.location = self.location.add(self.direction)
+        self.location: Point = self.location.add(self.direction)
         if self.is_infected():
             self.sickness += 1
         if self.sickness > constants.RECOVERY_PERIOD:
             self.immunize()
 
-
     def contact_with(self, other: Cell) -> None:
+        """Determines conditions of contact."""
         if self.is_infected() and other.is_vulnerable():
             other.contract_disease()
         elif self.is_vulnerable() and other.is_infected():
             self.contract_disease()
 
-
     def immunize(self) -> None:
-        self.sickness = constants.IMMUNE
-
+        """Cell becomes immune."""
+        self.sickness: int = constants.IMMUNE
 
     def is_immune(self) -> bool:
+        """Checks for immunity."""
         if self.sickness == constants.IMMUNE:
             return True
         return False
@@ -107,9 +104,9 @@ class Model:
 
     def __init__(self, cells: int, speed: float, infected: int, protected: int = 0) -> None:
         """Initialize the cells with random locations and directions."""
-        self.population = []
-        if infected >= cells or infected <= 0 or (protected + infected) >= cells:
-            raise ValueError("Improper starting value(s) of immune/infected cells")
+        self.population: list[Cell] = []
+        if infected >= cells or infected <= 0 or (protected + infected) >= cells or protected >= cells or protected < 0:
+            raise ValueError("Improper starting value(s) of immune/infected cells") 
         for _ in range(protected):
             start_location: Point = self.random_location()
             start_direction: Point = self.random_direction(speed)
@@ -128,7 +125,6 @@ class Model:
             cell.contract_disease()
             self.population.append(cell)
         
-    
     def tick(self) -> None:
         """Update the state of the simulation by one time step."""
         self.time += 1
@@ -137,21 +133,20 @@ class Model:
             self.enforce_bounds(cell)
         self.check_contacts()
 
-
     def random_location(self) -> Point:
         """Generate a random location."""
         start_x: float = random() * constants.BOUNDS_WIDTH - constants.MAX_X
         start_y: float = random() * constants.BOUNDS_HEIGHT - constants.MAX_Y
-        return Point(start_x, start_y)
-
+        result: Point = Point(start_x, start_y)
+        return result
 
     def random_direction(self, speed: float) -> Point:
         """Generate a 'point' used as a directional vector."""
         random_angle: float = 2.0 * pi * random()
         direction_x: float = cos(random_angle) * speed
         direction_y: float = sin(random_angle) * speed
-        return Point(direction_x, direction_y)
-
+        result: Point = Point(direction_x, direction_y)
+        return result
 
     def enforce_bounds(self, cell: Cell) -> None:
         """Cause a cell to 'bounce' if it goes out of bounds."""
@@ -168,9 +163,9 @@ class Model:
             cell.location.y = constants.MIN_Y
             cell.direction.y *= -1.0
 
-
     def check_contacts(self) -> None:
-        check_list: list = []
+        """Checks contact of two cells."""
+        check_list: list[Cell] = []
         for x1 in self.population:
             for x2 in self.population:
                 if x1 != x2 and x1 not in check_list:
@@ -179,11 +174,9 @@ class Model:
                         check_list.append(x1)
                         check_list.append(x2)
                 
-
     def is_complete(self) -> bool:
         """Method to indicate when the simulation is complete."""
         for cell in self.population:
             if cell.is_infected():
                 return False
         return True
-        
