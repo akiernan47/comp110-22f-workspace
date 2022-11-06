@@ -16,4 +16,4 @@ CELL_SPEED: float = 5.0
 
 VULNERABLE: int = 0
 INFECTED: int = 1
-INIT_INFECTED: int = 10
+INIT_INFECTED: int = 1
