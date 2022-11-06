@@ -15,7 +15,7 @@ class Point:
     y: float
 
 
-    def __init__(self, x: float, y: float):
+    def __init__(self, x: float, y: float) -> None:
         """Construct a point with x, y coordinates."""
         self.x = x
         self.y = y
