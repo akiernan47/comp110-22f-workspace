@@ -3,7 +3,7 @@
 from __future__ import annotations
 from random import random
 from exercises.ex09 import constants
-from math import sin, cos, pi
+from math import sin, cos, pi, sqrt
 
 
 __author__ = "730515426"
@@ -14,16 +14,22 @@ class Point:
     x: float
     y: float
 
+
     def __init__(self, x: float, y: float):
         """Construct a point with x, y coordinates."""
         self.x = x
         self.y = y
+
 
     def add(self, other: Point) -> Point:
         """Add two Point objects together and return a new Point."""
         x: float = self.x + other.x
         y: float = self.y + other.y
         return Point(x, y)
+
+
+    def distance(self, other: Point) -> float:
+        return sqrt((other.x - self.x)**2 + (other.y - self.y)**2)
 
 
 class Cell:
