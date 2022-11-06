@@ -76,6 +76,13 @@ class Cell:
             return "gray"
 
 
+    def contact_with(self, other: Cell) -> None:
+        if self.is_infected() and other.is_vulnerable():
+            other.contract_disease()
+        elif self.is_vulnerable() and other.is_infected():
+            self.contract_disease()
+
+
 class Model:
     """The state of the simulation."""
 
@@ -106,6 +113,7 @@ class Model:
         for cell in self.population:
             cell.tick()
             self.enforce_bounds(cell)
+        self.check_contacts()
 
 
     def random_location(self) -> Point:
@@ -137,6 +145,22 @@ class Model:
         elif cell.location.y < constants.MIN_Y:
             cell.location.y = constants.MIN_Y
             cell.direction.y *= -1.0
+
+
+    def check_contacts(self) -> None:
+        i: int = 0
+        j: int = 1
+        for _ in self.population:
+            while i < len(self.population) and j < len(self.population):
+                if self.population[i].location.distance(self.population[j].location) < constants.CELL_RADIUS:
+                    self.population[i].contact_with(self.population[j])
+                    i += 1
+                    j += 1
+                i += 1
+                j += 1
+            
+
+
 
 
     def is_complete(self) -> bool:
