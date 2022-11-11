@@ -84,7 +84,7 @@ class Simpy:
             result2: Simpy = Simpy(float_track)
             return result2
 
-    def __eq__(self, rhs: Union[float, Simpy]) -> list[bool]: # type: ignore
+    def __eq__(self, rhs: Union[float, Simpy]) -> list[bool]:
         """Equality operation override."""
         if isinstance(rhs, Simpy):
             assert len(self.values) == len(rhs.values)
@@ -127,13 +127,10 @@ class Simpy:
         truths: list[float] = []
         i: int = 0
         while i < len(self.values):
-            if rhs[i] == True:
+            if rhs[i]:
                 truths.append(self.values[i])
                 i += 1
             else:
                 i += 1
         result: Simpy = Simpy(truths)
         return result
-
-
-
